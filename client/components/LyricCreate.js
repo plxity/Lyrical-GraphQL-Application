@@ -9,6 +9,12 @@ import graphql from 'react-apollo';
          }
      }
      onSubmit(){
+         this.props.mutate({
+             variables:{
+                content:this.state.content,
+                songId:this.props.songId
+             }
+         }).then(()=>this.setState({content:''}));
 
      }
   render() {
@@ -23,5 +29,17 @@ import graphql from 'react-apollo';
 }
 const mutation= gql`
 
+
+mutation AddLyricToSong($content:String, $songId:ID){
+    addLyricToSong(content:$content,songId:$songId){
+        id
+        lyrics{
+            id
+            content
+        }
+    }
+}
+
+
 `;
-export default LyricCreate;
+export default graphql(mutation)(LyricCreate);
