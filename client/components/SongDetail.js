@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import songQuery from '../queries/songDetail';
+import songQuery from '../queries/songQuery';
 import {graphql} from 'react-apollo';
 import {Link} from 'react-router';
 import LyricCreate from'./LyricCreate';
